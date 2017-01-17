@@ -1,0 +1,52 @@
+#site-header {
+    margin-top: -10px;
+    padding-left: 20px;
+}
+#header-dha {
+    color: lightblue;
+    font-family: Arial;
+    font-weight: bolder;
+    font-size: 11px;
+    font-style: italic;
+    text-shadow: 2px 1px 2px #000;
+}
+.header-container {
+  background: #032034;
+  color: #fff;
+  height: 70px;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 500;
+}
+.header-container .pull-left p {
+    margin-top: -10px;
+    margin-left: 40px;
+    color:lightslategray; 
+    font-size:13px; 
+    font-style:italic;
+    font-family: Arial;
+    font-weight:bolder;
+    text-shadow: 1px 2px 2px #000;
+}
+#header-version {
+    margin-top: -6px;
+    margin-left: 75px;
+    color:lightblue; 
+    font-size:13px; 
+    font-style:italic;
+    font-family: Arial;
+    font-weight:bolder;
+    text-shadow: 1px 2px 2px #000;
+}
+.header-container .pull-right p {
+  line-height: 70px;
+}
+
+.nav-container {
+  padding: 0px;
+}
+
+.navbar-fixed-top {
+  top: 70px;
+}

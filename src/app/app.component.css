@@ -1,0 +1,25 @@
+#displayBody {
+    border-radius:5px;
+}
+.primary-header {
+    background: #032034;
+}
+.sub-header {
+    background-color: rgba(52, 73, 94, 0.5);
+}
+.content {
+  margin-top: 80px !important;
+  margin-bottom:13px;
+  border: 1px solid #333;
+  font-size:14px;
+}
+#clearSearch {
+    background-color:#032034;
+    color:white
+}
+h5 {
+    font-size:15px;
+}
+#comments-header {
+    padding-top:10px;
+}
