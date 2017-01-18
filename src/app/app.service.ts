@@ -11,8 +11,8 @@ export class AppService {
     private _appURL = '';
     getTests(params: SearchParams) : Observable<App>{
         this._appURL = 'http://localhost:24656/api/todo/search/?id=' + params.caseNo + '&ssn=' + params.ssn + '&phone=' + params.phoneNo +
-         '&first=' + params.firstName + '&last=' + params.lastName , { withCredentials: true }; // URL to web api
-        return this._http.get(this._appURL)
+         '&first=' + params.firstName + '&last=' + params.lastName; // URL to web api
+        return this._http.get(this._appURL, { withCredentials: true })
             .map(res => <App>res.json())
             .catch(this.handleError);
     }
