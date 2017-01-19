@@ -28,12 +28,12 @@ export class AppComponent implements OnInit {
         this._appService.getTests(parameters)
         .subscribe(value => {
           if(value["caseNo"]) {
-            this.case = value;
             this.isValidCase = true;
           }
           else {
             this.isValidCase = false;
           }
+          this.case = value;
         },
         error => {this.errorMessage = <any>error });
   }

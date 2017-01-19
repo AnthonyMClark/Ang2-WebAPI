@@ -30,6 +30,7 @@ export class CaseCommentsComponent implements OnChanges {
                     { title: "User" },
                     { title: "Description" }
                 ],
+                destroy: true,
                 "lengthChange": false,
                 "info": false,
                 "dom": '<"top"i>rt<"bottom"flp><"clear">',

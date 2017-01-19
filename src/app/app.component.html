@@ -18,8 +18,8 @@
     </div>
     <button type="submit" class="btn btn-info paramBar" (click)="searchCase(params)"><i class="fa fa-search" aria-hidden="true"></i></button>
     <button type="submit" class="btn paramBar" id="clearSearch" (click)="clearParams(params)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-    <div class="pull-right">
-      <p><i class="fa fa-user-circle-o" aria-hidden="true"></i> Anthony Clark (KMP4)</p>
+    <div class="pull-right" *ngIf="case">
+      <p><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{case.username}}</p>
     </div>
   </form>
   <hr />
@@ -77,13 +77,13 @@
       </div>
       <div class="col-md-6">
         <div class="col-md-4">
-          <b>Case Indicators</b>
+          <b>Case Indicators</b> <i class="fa fa-info-circle text-info" aria-hidden="true"></i>
           <table class="table table-striped table-sm">
             <tr *ngFor="let indicator of case.indicators" [class.table-danger]="indicator.isActive" [class.font-weight-bold]="indicator.isActive"><td>{{indicator.name}}</td></tr>
           </table>
         </div>
         <div class="col-md-4">
-          <b>Case Status</b>
+          <b>Case Status</b> <i class="fa fa-info-circle text-info" aria-hidden="true"></i>
           <table class="table table-striped table-sm">
             <tr><td>EBT</td><td>{{case.caseStatus.ebt}}</td></tr>
             <tr><td>Homeless</td><td>{{case.caseStatus.homeless}}</td></tr>
@@ -92,7 +92,10 @@
           </table>
         </div>
         <div class="col-md-4">
-          <b>To Do List</b>
+          <popover-content #myPopover title="To Do List">
+            <p>Here is some popover content</p>
+          </popover-content>
+          <b>To Do List</b> <i class="fa fa-info-circle text-info" aria-hidden="true" [popover]="myPopover" [popoverOnHover]="true" popoverPlacement="top"></i>
           <table class="table table-striped table-sm">
             <tr *ngFor="let toDo of case.toDoList"><td>{{toDo.actionDescription}}</td></tr>
           </table>
@@ -142,7 +145,32 @@
           </div>
         </div>
     </span>
+    <span *ngIf="!isValidCase">
+      <div class="col-md-12">
+        <div class="card mb-1 p-0 mt-1 offset-md-4 col-md-4">
+          <div class="card-header primary-header" role="tab" id="headingTwo">
+            <h5 class="mb-0 text-white">
+              No Records Found
+            </h5>
+          </div>
+          <div class="card-body">
+            <p>The following search returned no results:</p>
+            <table class="table table-striped table-bordered table-sm mt-1">
+              <thead>
+                <tr class="bg-info text-white"><th>Parameter</th><th>Entered Value</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Case #</td><td>{{params.caseNo}}</td></tr>
+                <tr><td>SSN</td><td>{{params.ssn}}</td></tr>
+                <tr><td>Phone #</td><td>{{params.phoneNo}}</td></tr>
+                <tr><td>First Name</td><td>{{params.firstName}}</td></tr>
+                <tr><td>Last Name</td><td>{{params.lastName}}</td></tr>
+              </tbody>
+            </table>     
+          </div>
+        </div>
+      </div>
+    </span>
   </div>
-
   <!--<div *ngIf="case"><pre>{{ case.caseActivityDetails | json}}</pre></div>-->
 </div>
