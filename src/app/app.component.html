@@ -18,127 +18,165 @@
     </div>
     <button type="submit" class="btn btn-info paramBar" (click)="searchCase(params)"><i class="fa fa-search" aria-hidden="true"></i></button>
     <button type="submit" class="btn paramBar" id="clearSearch" (click)="clearParams(params)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-    <div class="pull-right"><p><i class="fa fa-user-circle-o" aria-hidden="true"></i> Anthony Clark (KMP4)</p></div>
+    <div class="pull-right" *ngIf="case">
+      <p><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{case.username}}</p>
+    </div>
   </form>
   <hr />
-  <div class="row" *ngIf = "case">
-    <div class="col-md-6">
-      <table class="table table-striped table-sm">
-        <tr>
-          <td>Case #</td><td>{{case.caseNo}}</td><td>Home</td><td>{{case.homePhone}}</td>
-        </tr>
-        <tr>
-          <td>SSN</td><td>{{case.ssn}}</td><td>Mobile</td><td>{{case.mobilePhone}}</td>
-        </tr>
-        <tr>
-          <td>DOB</td><td>{{case.dob}}</td><td>Text</td><td>{{case.textPhone}}</td>
-        </tr>
-        <tr>
-          <td>Case Name</td><td>{{case.caseFirst}} {{case.caseLast}}</td><td>Email</td><td>{{case.email}}</td>
-        </tr>
-        <tr>
-          <td>Address</td><td>{{case.street}}</td><td>Text</td><td>{{case.bcw}}</td>
-        </tr>
-        <tr>
-          <td></td><td>{{case.city}} {{case.state}} {{case.zip}}</td><td>AR</td><td>{{case.arLast}}, {{case.arFirst}}</td>
-        </tr>
-      </table>
-      <div>
-        <div id="accordion" role="tablist" aria-multiselectable="true">
-          <div class="card mb-0">
-            <div class="card-header primary-header" role="tab" id="headingOne">
-              <h5 class="mb-0">
-                <a class="text-white" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  ACTIVE INDIVIDUALS ON CASE <i class="fa fa-users pull-right" aria-hidden="true"></i>
-                </a>
-              </h5>
-            </div>
-            <div id="collapseOne" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
-              <case-indv-selector [individualData]='case.caseIndividuals' (individualID)="individualID($event)"></case-indv-selector>
-            </div>
-          </div>
-          <div class="card mb-0 mt-1">
-            <div class="card-header primary-header" role="tab" id="headingTwo">
-              <h5 class="mb-0">
-                <a class="collapsed text-white" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                  INDIVIDUAL DETAILS <i class="fa fa-user pull-right" aria-hidden="true"></i>
-                </a>
-              </h5>
-            </div>
-            <div id="collapseTwo" class="collapse in" role="tabpanel" aria-labelledby="headingTwo">
-              <indv-details-selector [individualDetails] = 'case.indivDetails' [individualID] = "selectedIndividualID"></indv-details-selector>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="col-md-4">
-        <b>Case Indicators</b>
+  <div class="row" *ngIf="case">
+    <span *ngIf="isValidCase">
+      <div class="col-md-6">
         <table class="table table-striped table-sm">
-          <tr *ngFor="let indicator of case.indicators" [class.table-danger]="indicator.isActive" [class.font-weight-bold]="indicator.isActive"><td>{{indicator.name}}</td></tr>
+          <tr>
+            <td>Case #</td><td>{{case.caseNo}}</td><td>Home</td><td>{{case.homePhone}}</td>
+          </tr>
+          <tr>
+            <td>SSN</td><td>{{case.ssn}}</td><td>Mobile</td><td>{{case.mobilePhone}}</td>
+          </tr>
+          <tr>
+            <td>DOB</td><td>{{case.dob}}</td><td>Text</td><td>{{case.textPhone}}</td>
+          </tr>
+          <tr>
+            <td>Case Name</td><td>{{case.caseFirst}} {{case.caseLast}}</td><td>Email</td><td>{{case.email}}</td>
+          </tr>
+          <tr>
+            <td>Address</td><td>{{case.street}}</td><td>Text</td><td>{{case.bcw}}</td>
+          </tr>
+          <tr>
+            <td></td><td>{{case.city}} {{case.state}} {{case.zip}}</td><td>AR</td><td>{{case.arLast}}, {{case.arFirst}}</td>
+          </tr>
         </table>
-      </div>
-      <div class="col-md-4">
-        <b>Case Status</b>
-        <table class="table table-striped table-sm">
-          <tr><td>EBT</td><td>{{case.caseStatus.ebt}}</td></tr>
-          <tr><td>Homeless</td><td>{{case.caseStatus.homeless}}</td></tr>
-          <tr><td>ABC</td><td>{{case.caseStatus.abc}}</td></tr>
-          <tr><td>XYZ</td><td>{{case.caseStatus.xyz}}</td></tr>
-        </table>
-      </div>
-      <div class="col-md-4">
-        <b>To Do List</b>
-        <table class="table table-striped table-sm">
-          <tr *ngFor="let toDo of case.toDoList"><td>{{toDo.actionDescription}}</td></tr>
-        </table>
-      </div>
-      <div class="clearfix"></div>
-      <div>
-        <div id="accordion2" role="tablist" aria-multiselectable="true">
-          <div class="card mb-0">
-            <div class="card-header primary-header" role="tab" id="headingThree">
-              <h5 class="mb-0">
-                <a class="text-white" data-toggle="collapse" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                  RECENT CASE ACTIVITY (90 Days) <i class="fa fa-tags pull-right" aria-hidden="true"></i>
-                </a>
-              </h5>
+        <div>
+          <div id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="card mb-0">
+              <div class="card-header primary-header" role="tab" id="headingOne">
+                <h5 class="mb-0">
+                  <a class="text-white" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    ACTIVE INDIVIDUALS ON CASE <i class="fa fa-users pull-right" aria-hidden="true"></i>
+                  </a>
+                </h5>
+              </div>
+              <div id="collapseOne" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <case-indv-selector [individualData]='case.caseIndividuals' (individualID)="individualID($event)"></case-indv-selector>
+              </div>
             </div>
-            <div id="collapseThree" class="collapse in" role="tabpanel" aria-labelledby="headingThree">
-              <case-activity-selector [caseActivity] = "case.caseActivity" (activityID)="activityID($event)"></case-activity-selector>
+            <div class="card mb-0 mt-1">
+              <div class="card-header primary-header" role="tab" id="headingTwo">
+                <h5 class="mb-0">
+                  <a class="collapsed text-white" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    INDIVIDUAL DETAILS <i class="fa fa-user pull-right" aria-hidden="true"></i>
+                  </a>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                <indv-details-selector [individualDetails] = 'case.indivDetails' [individualID] = "selectedIndividualID"></indv-details-selector>
+              </div>
             </div>
           </div>
-          <div class="card mb-0 mt-1">
-            <div class="card-header primary-header" role="tab" id="headingFour">
-              <h5 class="mb-0">
-                <a class="text-white" data-toggle="collapse" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                  ACTIVITY DETAILS <i class="fa fa-tag pull-right" aria-hidden="true"></i>
-                </a>
-              </h5>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="col-md-4">
+          <popover-content #indicatorPopover title="Case Indicators">
+            <p>Here is some popover content</p>
+          </popover-content>
+          <b>Case Indicators</b> <i class="fa fa-info-circle text-info" aria-hidden="true" [popover]="indicatorPopover" [popoverOnHover]="true" popoverPlacement="top"></i>
+          <table class="table table-striped table-sm">
+            <tr *ngFor="let indicator of case.indicators" [class.table-danger]="indicator.isActive" [class.font-weight-bold]="indicator.isActive"><td>{{indicator.name}}</td></tr>
+          </table>
+        </div>
+        <div class="col-md-4">
+          <popover-content #statusPopover title="Case Status">
+            <p>Here is some popover content</p>
+          </popover-content>
+          <b>Case Status</b> <i class="fa fa-info-circle text-info" aria-hidden="true" [popover]="statusPopover" [popoverOnHover]="true" popoverPlacement="top"></i>
+          <table class="table table-striped table-sm">
+            <tr><td>EBT</td><td>{{case.caseStatus.ebt}}</td></tr>
+            <tr><td>Homeless</td><td>{{case.caseStatus.homeless}}</td></tr>
+            <tr><td>ABC</td><td>{{case.caseStatus.abc}}</td></tr>
+            <tr><td>XYZ</td><td>{{case.caseStatus.xyz}}</td></tr>
+          </table>
+        </div>
+        <div class="col-md-4">
+          <popover-content #toDoPopover title="To Do List">
+            <p>Here is some popover content</p>
+          </popover-content>
+          <b>To Do List</b> <i class="fa fa-info-circle text-info" aria-hidden="true" [popover]="toDoPopover" [popoverOnHover]="true" popoverPlacement="top"></i>
+          <table class="table table-striped table-sm">
+            <tr *ngFor="let toDo of case.toDoList"><td>{{toDo.actionDescription}}</td></tr>
+          </table>
+        </div>
+        <div class="clearfix"></div>
+        <div>
+          <div id="accordion2" role="tablist" aria-multiselectable="true">
+            <div class="card mb-0">
+              <div class="card-header primary-header" role="tab" id="headingThree">
+                <h5 class="mb-0">
+                  <a class="text-white" data-toggle="collapse" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                    RECENT CASE ACTIVITY (90 Days) <i class="fa fa-tags pull-right" aria-hidden="true"></i>
+                  </a>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse in" role="tabpanel" aria-labelledby="headingThree">
+                <case-activity-selector [caseActivity] = "case.caseActivity" (activityID)="activityID($event)"></case-activity-selector>
+              </div>
             </div>
-            <div id="collapseFour" class="collapse in" role="tabpanel" aria-labelledby="headingFour">
-              <activity-details-selector [activityDetails] = "case.caseActivityDetails" [activityID] = "selectedActivityID"></activity-details-selector>
+            <div class="card mb-0 mt-1">
+              <div class="card-header primary-header" role="tab" id="headingFour">
+                <h5 class="mb-0">
+                  <a class="text-white" data-toggle="collapse" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                    ACTIVITY DETAILS <i class="fa fa-tag pull-right" aria-hidden="true"></i>
+                  </a>
+                </h5>
+              </div>
+              <div id="collapseFour" class="collapse in" role="tabpanel" aria-labelledby="headingFour">
+                <activity-details-selector [activityDetails] = "case.caseActivityDetails" [activityID] = "selectedActivityID"></activity-details-selector>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-12 mt-1 mb-1">
-      <div class="card mb-0">
-        <div class="card-header primary-header" role="tab" id="headingFive">
-          <h5 class="mb-0">
-            <a class="text-white" data-toggle="collapse" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-              CASE COMMENTS <i class="fa fa-comment pull-right" aria-hidden="true"></i>
-            </a>
-          </h5>
+      <div class="col-md-12 mt-1 mb-1">
+        <div class="card mb-0">
+          <div class="card-header primary-header" role="tab" id="headingFive">
+            <h5 class="mb-0">
+              <a class="text-white" data-toggle="collapse" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                CASE COMMENTS <i class="fa fa-comment pull-right" aria-hidden="true"></i>
+              </a>
+            </h5>
+          </div>
+          <div id="collapseFive" class="collapse in" role="tabpanel" aria-labelledby="headingFive">
+            <case-comments-selector [commentsData]="case.caseComments"></case-comments-selector>
+          </div>
+          </div>
         </div>
-        <div id="collapseFive" class="collapse in" role="tabpanel" aria-labelledby="headingFive">
-          <case-comments-selector [commentsData]="case.caseComments"></case-comments-selector>
+    </span>
+    <span *ngIf="!isValidCase">
+      <div class="col-md-12">
+        <div class="card mb-1 p-0 mt-1 offset-md-4 col-md-4">
+          <div class="card-header primary-header" role="tab" id="headingTwo">
+            <h5 class="mb-0 text-white">
+              No Records Found
+            </h5>
+          </div>
+          <div class="card-body">
+            <p>The following search returned no results:</p>
+            <table class="table table-striped table-bordered table-sm mt-1">
+              <thead>
+                <tr class="bg-info text-white"><th>Parameter</th><th>Entered Value</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Case #</td><td>{{params.caseNo}}</td></tr>
+                <tr><td>SSN</td><td>{{params.ssn}}</td></tr>
+                <tr><td>Phone #</td><td>{{params.phoneNo}}</td></tr>
+                <tr><td>First Name</td><td>{{params.firstName}}</td></tr>
+                <tr><td>Last Name</td><td>{{params.lastName}}</td></tr>
+              </tbody>
+            </table>     
+          </div>
         </div>
       </div>
-    </div>
+    </span>
   </div>
-        <!--<div *ngIf="case"><pre>{{ case.caseActivityDetails | json}}</pre></div>-->
+  <!--<div *ngIf="case"><pre>{{ case.caseActivityDetails | json}}</pre></div>-->
 </div>
-

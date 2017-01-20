@@ -9,6 +9,7 @@ import { CaseCommentsComponent } from './case-comments/case-comments.component';
 import { ActivityDetailsComponent } from './activity-details/activity-details.component';
 import { CaseActivityComponent } from './case-activity/case-activity.component';
 import { CipBannerComponent } from './cip-banner/cip-banner.component';
+import { PopoverModule } from 'ngx-popover';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CipBannerComponent } from './cip-banner/cip-banner.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    PopoverModule
   ],
   providers: [],
   bootstrap: [AppComponent]

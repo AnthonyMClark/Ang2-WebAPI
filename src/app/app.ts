@@ -17,7 +17,8 @@ export class App {
         public ARFirst: string, 
         public ARLast: string, 
         public ActivityID: number,
-        public Indicators: Indicators[]
+        public Indicators: Indicators[],
+        public Username: string
     ) {}
 }
 export class Indicators {

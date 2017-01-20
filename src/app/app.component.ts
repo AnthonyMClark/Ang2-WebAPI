@@ -3,6 +3,7 @@ import { AppService } from './app.service';
 import { Router } from '@angular/router';
 import { App } from './app';
 import { SearchParams } from './searchParams';
+import { PopoverModule } from 'ngx-popover';
 
 @Component({
   selector: 'app-root',
@@ -10,23 +11,33 @@ import { SearchParams } from './searchParams';
   styleUrls: ['./app.component.css'],
   providers: [ AppService ]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   constructor(private _appService: AppService) { }
   errorMessage: string;
   public case: App;
   selectedActivityID: number = 1;
   selectedIndividualID: number = 1;
+  isValidCase: boolean = true;
   params: SearchParams;
   ngOnInit() {
     this.params = new SearchParams("1", null, null, "", "");
     this.getTests(this.params);
   }
+
   getTests(parameters: SearchParams) {
-    this._appService.getTests(parameters)
-        .subscribe(
-        value => this.case = value,
-        error => this.errorMessage = <any>error);
+        this._appService.getTests(parameters)
+        .subscribe(value => {
+          if(value["caseNo"]) {
+            this.isValidCase = true;
+          }
+          else {
+            this.isValidCase = false;
+          }
+          this.case = value;
+        },
+        error => {this.errorMessage = <any>error });
   }
+
   activityID(activityID: number) {
     this.selectedActivityID = activityID;
   }
