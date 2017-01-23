@@ -14,13 +14,13 @@ export class IndividualDetailsComponent implements OnChanges {
         if (this.individualDetails && this.individualDetails.length > 0) {
             let details = [];
             for (let i = 0; i < this.individualDetails.length; i++) {
-                if(this.individualDetails[i]["indivID"] == this.individualID) {
-                    let program = this.individualDetails[i]["program"]
-                    let status = this.individualDetails[i]["status"]
-                    let rrDueDate = this.individualDetails[i]["rrDueDate"]
-                    let toaWeeks = this.individualDetails[i]["toaWeeks"]
-                    let grantAmount = this.individualDetails[i]["grantAmount"]
-                    let workerCode = this.individualDetails[i]["workerCode"]
+                if(this.individualDetails[i]["IndivID"] == this.individualID) {
+                    let program = this.individualDetails[i]["Program"]
+                    let status = this.individualDetails[i]["Status"]
+                    let rrDueDate = this.individualDetails[i]["RRDueDate"]
+                    let toaWeeks = this.individualDetails[i]["TOAWeeks"]
+                    let grantAmount = this.individualDetails[i]["GrantAmount"]
+                    let workerCode = this.individualDetails[i]["WorkerCode"]
                     let indvidual = new Array(program, status, rrDueDate, toaWeeks, grantAmount, workerCode);
                     details.push(indvidual);
                 }

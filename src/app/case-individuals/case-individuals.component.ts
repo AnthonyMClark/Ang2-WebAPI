@@ -48,7 +48,7 @@ export class CaseIndividualsComponent {
         this.activitySortDesc = !this.activitySortDesc;
         //Maintain the highlighted item after sorting
         for (let i = 0; i < this.individualData.length; i++) {
-            if (this.selectedIndivID == this.individualData[i]["indivID"]) {
+            if (this.selectedIndivID == this.individualData[i]["IndivID"]) {
                 this.selectedIdx = i;
             }
         }

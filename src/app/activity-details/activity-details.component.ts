@@ -100,120 +100,120 @@ export class ActivityDetailsComponent implements OnChanges {
 
     setTableData(chosenActivityID: number): any[] {
         let details = [];
-        if (chosenActivityID == this.activityDetails.tasksID) {
-            for (let i = 0; i < this.activityDetails.tasks.length; i++) {
-                let createDate = this.activityDetails.tasks[i]["createDate"]
-                let priority = this.activityDetails.tasks[i]["priority"]
-                let type = this.activityDetails.tasks[i]["type"]
-                let formNo = this.activityDetails.tasks[i]["formNo"]
-                let formCat = this.activityDetails.tasks[i]["formCat"]
-                let workerCode = this.activityDetails.tasks[i]["workerCode"]
-                let status = this.activityDetails.tasks[i]["status"]
-                let assignedTo = this.activityDetails.tasks[i]["assignedTo"]
-                let completedBy = this.activityDetails.tasks[i]["completedBy"]
-                let completedDate = this.activityDetails.tasks[i]["completedDate"]
-                let description = this.activityDetails.tasks[i]["description"]
+        if (chosenActivityID == this.activityDetails.TasksID) {
+            for (let i = 0; i < this.activityDetails.Tasks.length; i++) {
+                let createDate = this.activityDetails.Tasks[i]["CreateDate"]
+                let priority = this.activityDetails.Tasks[i]["Priority"]
+                let type = this.activityDetails.Tasks[i]["Type"]
+                let formNo = this.activityDetails.Tasks[i]["FormNo"]
+                let formCat = this.activityDetails.Tasks[i]["FormCat"]
+                let workerCode = this.activityDetails.Tasks[i]["WorkerCode"]
+                let status = this.activityDetails.Tasks[i]["Status"]
+                let assignedTo = this.activityDetails.Tasks[i]["AssignedTo"]
+                let completedBy = this.activityDetails.Tasks[i]["CompletedBy"]
+                let completedDate = this.activityDetails.Tasks[i]["CompletedDate"]
+                let description = this.activityDetails.Tasks[i]["Description"]
                 let activity = new Array(createDate, priority, type, formNo, formCat, workerCode); //, status, assignedTo, completedBy, completedDate, description);
                 details.push(activity);
             }
         }
-        else if (chosenActivityID == this.activityDetails.docRecID) {
-            for (let i = 0; i < this.activityDetails.docRec.length; i++) {
-                let dateAdded = this.activityDetails.docRec[i]["dateAdded"]
-                let formNo = this.activityDetails.docRec[i]["formNo"]
-                let category = this.activityDetails.docRec[i]["category"]
-                let source = this.activityDetails.docRec[i]["source"]
-                let taskCreationStatus = this.activityDetails.docRec[i]["taskCreationStatus"]
-                let fileNetLink = this.activityDetails.docRec[i]["fileNetLink"]
+        else if (chosenActivityID == this.activityDetails.DocRecID) {
+            for (let i = 0; i < this.activityDetails.DocRec.length; i++) {
+                let dateAdded = this.activityDetails.DocRec[i]["DateAdded"]
+                let formNo = this.activityDetails.DocRec[i]["FormNo"]
+                let category = this.activityDetails.DocRec[i]["Category"]
+                let source = this.activityDetails.DocRec[i]["Source"]
+                let taskCreationStatus = this.activityDetails.DocRec[i]["TaskCreationStatus"]
+                let fileNetLink = this.activityDetails.DocRec[i]["FileNetLink"]
                 let activity = new Array(dateAdded, formNo, category, source, taskCreationStatus, fileNetLink);
                 details.push(activity);
             }
         }
-        else if (chosenActivityID == this.activityDetails.docMailedID) {
-            for (let i = 0; i < this.activityDetails.docMailed.length; i++) {
-                let dateMailed = this.activityDetails.docMailed[i]["dateMailed"]
-                let formNo = this.activityDetails.docMailed[i]["formNo"]
-                let category = this.activityDetails.docMailed[i]["category"]
-                let source = this.activityDetails.docMailed[i]["source"]
+        else if (chosenActivityID == this.activityDetails.DocMailedID) {
+            for (let i = 0; i < this.activityDetails.DocMailed.length; i++) {
+                let dateMailed = this.activityDetails.DocMailed[i]["DateMailed"]
+                let formNo = this.activityDetails.DocMailed[i]["FormNo"]
+                let category = this.activityDetails.DocMailed[i]["Category"]
+                let source = this.activityDetails.DocMailed[i]["Source"]
                 let activity = new Array(dateMailed, formNo, category, source);
                 details.push(activity);
             }
         }
-        else if (chosenActivityID == this.activityDetails.appointmentID) {
-            for (let i = 0; i < this.activityDetails.appointment.length; i++) {
-                let date = this.activityDetails.appointment[i]["date"]
-                let startTime = this.activityDetails.appointment[i]["startTime"]
-                let type = this.activityDetails.appointment[i]["type"]
-                let location = this.activityDetails.appointment[i]["location"]
-                let status = this.activityDetails.appointment[i]["status"]
-                let assignedTo = this.activityDetails.appointment[i]["assignedTo"]
-                let completedBy = this.activityDetails.appointment[i]["completedBy"]
-                let reminder = this.activityDetails.appointment[i]["reminder"]
-                let limsNote = this.activityDetails.appointment[i]["limsNote"]
-                let limsLink = this.activityDetails.appointment[i]["limsLink"]
+        else if (chosenActivityID == this.activityDetails.AppointmentID) {
+            for (let i = 0; i < this.activityDetails.Appointment.length; i++) {
+                let date = this.activityDetails.Appointment[i]["Date"]
+                let startTime = this.activityDetails.Appointment[i]["StartTime"]
+                let type = this.activityDetails.Appointment[i]["Type"]
+                let location = this.activityDetails.Appointment[i]["Location"]
+                let status = this.activityDetails.Appointment[i]["Status"]
+                let assignedTo = this.activityDetails.Appointment[i]["AssignedTo"]
+                let completedBy = this.activityDetails.Appointment[i]["CompletedBy"]
+                let reminder = this.activityDetails.Appointment[i]["Reminder"]
+                let limsNote = this.activityDetails.Appointment[i]["LimsNote"]
+                let limsLink = this.activityDetails.Appointment[i]["LimsLink"]
                 let activity = new Array(date, startTime, type, location, status, assignedTo, completedBy, reminder, limsNote, limsLink);
                 details.push(activity);
             }
         }
-        else if (chosenActivityID == this.activityDetails.lobbyID) {
-            for (let i = 0; i < this.activityDetails.lobby.length; i++) {
-                let date = this.activityDetails.lobby[i]["date"]
-                let kioskTime = this.activityDetails.lobby[i]["kioskTime"]
-                let reason = this.activityDetails.lobby[i]["reason"]
-                let location = this.activityDetails.lobby[i]["location"]
-                let limsLink = this.activityDetails.lobby[i]["limsLink"]
-                let ssn = this.activityDetails.lobby[i]["ssn"]
+        else if (chosenActivityID == this.activityDetails.LobbyID) {
+            for (let i = 0; i < this.activityDetails.Lobby.length; i++) {
+                let date = this.activityDetails.Lobby[i]["Date"]
+                let kioskTime = this.activityDetails.Lobby[i]["KioskTime"]
+                let reason = this.activityDetails.Lobby[i]["Reason"]
+                let location = this.activityDetails.Lobby[i]["Location"]
+                let limsLink = this.activityDetails.Lobby[i]["LimsLink"]
+                let ssn = this.activityDetails.Lobby[i]["SSN"]
                 let activity = new Array(date, kioskTime, reason, location, limsLink, ssn);
                 details.push(activity);
             }
         }
-        else if (chosenActivityID == this.activityDetails.callsID) {
-            for (let i = 0; i < this.activityDetails.calls.length; i++) {
-                let date = this.activityDetails.calls[i]["date"]
-                let time = this.activityDetails.calls[i]["time"]
-                let duration = this.activityDetails.calls[i]["duration"]
-                let fromClientPhone = this.activityDetails.calls[i]["fromClientPhone"]
-                let toCountyPhone = this.activityDetails.calls[i]["toCountyPhone"]
-                let receiveWKCD = this.activityDetails.calls[i]["receiveWKCD"]
-                let toClientPhone = this.activityDetails.calls[i]["toClientPhone"]
-                let fromCountyPhone = this.activityDetails.calls[i]["fromCountyPhone"]
-                let callingWKCD = this.activityDetails.calls[i]["callingWKCD"]
-                let isServiceCenter = this.activityDetails.calls[i]["isServiceCenter"]
+        else if (chosenActivityID == this.activityDetails.CallsID) {
+            for (let i = 0; i < this.activityDetails.Calls.length; i++) {
+                let date = this.activityDetails.Calls[i]["Date"]
+                let time = this.activityDetails.Calls[i]["Time"]
+                let duration = this.activityDetails.Calls[i]["Duration"]
+                let fromClientPhone = this.activityDetails.Calls[i]["FromClientPhone"]
+                let toCountyPhone = this.activityDetails.Calls[i]["ToCountyPhone"]
+                let receiveWKCD = this.activityDetails.Calls[i]["ReceiveWKCD"]
+                let toClientPhone = this.activityDetails.Calls[i]["ToClientPhone"]
+                let fromCountyPhone = this.activityDetails.Calls[i]["FromCountyPhone"]
+                let callingWKCD = this.activityDetails.Calls[i]["CallingWKCD"]
+                let isServiceCenter = this.activityDetails.Calls[i]["IsServiceCenter"]
                 let activity = new Array(date, time, duration, fromClientPhone, toCountyPhone, receiveWKCD, toClientPhone, fromCountyPhone)//, callingWKCD, isServiceCenter);
                 details.push(activity);
             }
         }
-        else if (chosenActivityID == this.activityDetails.esActivitiesID) {
-            for (let i = 0; i < this.activityDetails.esActivities.length; i++) {
-                let activityName = this.activityDetails.esActivities[i]["activity"]
-                let status = this.activityDetails.esActivities[i]["status"]
-                let lastName = this.activityDetails.esActivities[i]["lastName"]
-                let firstName = this.activityDetails.esActivities[i]["firstName"]
-                let expHours = this.activityDetails.esActivities[i]["expHours"]
-                let unit = this.activityDetails.esActivities[i]["unit"]
-                let startDate = this.activityDetails.esActivities[i]["startDate"]
-                let endDate = this.activityDetails.esActivities[i]["endDate"]
-                let activityLink = this.activityDetails.esActivities[i]["activityLink"]
+        else if (chosenActivityID == this.activityDetails.ESActivitiesID) {
+            for (let i = 0; i < this.activityDetails.ESActivities.length; i++) {
+                let activityName = this.activityDetails.ESActivities[i]["Activity"]
+                let status = this.activityDetails.ESActivities[i]["Status"]
+                let lastName = this.activityDetails.ESActivities[i]["LastName"]
+                let firstName = this.activityDetails.ESActivities[i]["FirstName"]
+                let expHours = this.activityDetails.ESActivities[i]["ExpHours"]
+                let unit = this.activityDetails.ESActivities[i]["Unit"]
+                let startDate = this.activityDetails.ESActivities[i]["StartDate"]
+                let endDate = this.activityDetails.ESActivities[i]["EndDate"]
+                let activityLink = this.activityDetails.ESActivities[i]["ActivityLink"]
                 let activity = new Array(activityName, status, lastName + ", " + firstName, expHours, unit, startDate, endDate, activityLink);
                 details.push(activity);
             }
         }
-        else if (chosenActivityID == this.activityDetails.childCareID) {
-            for (let i = 0; i < this.activityDetails.childCare.length; i++) {
-                let dateMailed = this.activityDetails.childCare[i]["dateMailed"]
-                let formNo = this.activityDetails.childCare[i]["formNo"]
-                let category = this.activityDetails.childCare[i]["category"]
-                let source = this.activityDetails.childCare[i]["source"]
+        else if (chosenActivityID == this.activityDetails.ChildCareID) {
+            for (let i = 0; i < this.activityDetails.ChildCare.length; i++) {
+                let dateMailed = this.activityDetails.ChildCare[i]["DateMailed"]
+                let formNo = this.activityDetails.ChildCare[i]["FormNo"]
+                let category = this.activityDetails.ChildCare[i]["Category"]
+                let source = this.activityDetails.ChildCare[i]["Source"]
                 let activity = new Array(dateMailed, formNo, category, source);
                 details.push(activity);
             }
         }
-        else if (chosenActivityID == this.activityDetails.kinGAPID) {
-            for (let i = 0; i < this.activityDetails.kinGAP.length; i++) {
-                let dateMailed = this.activityDetails.kinGAP[i]["dateMailed"]
-                let formNo = this.activityDetails.kinGAP[i]["formNo"]
-                let category = this.activityDetails.kinGAP[i]["category"]
-                let source = this.activityDetails.kinGAP[i]["source"]
+        else if (chosenActivityID == this.activityDetails.KinGAPID) {
+            for (let i = 0; i < this.activityDetails.KinGAP.length; i++) {
+                let dateMailed = this.activityDetails.KinGAP[i]["DateMailed"]
+                let formNo = this.activityDetails.KinGAP[i]["FormNo"]
+                let category = this.activityDetails.KinGAP[i]["Category"]
+                let source = this.activityDetails.KinGAP[i]["Source"]
                 let activity = new Array(dateMailed, formNo, category, source);
                 details.push(activity);
             }

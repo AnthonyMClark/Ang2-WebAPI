@@ -20,14 +20,14 @@ export class AppComponent implements OnInit {
   isValidCase: boolean = true;
   params: SearchParams;
   ngOnInit() {
-    this.params = new SearchParams("1", null, null, "", "");
+    this.params = new SearchParams("f", null, null, "", "");
     this.getTests(this.params);
   }
 
   getTests(parameters: SearchParams) {
         this._appService.getTests(parameters)
         .subscribe(value => {
-          if(value["caseNo"]) {
+          if(value["CaseNo"]) {
             this.isValidCase = true;
           }
           else {

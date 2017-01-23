@@ -19,7 +19,7 @@
     <button type="submit" class="btn btn-info paramBar" (click)="searchCase(params)"><i class="fa fa-search" aria-hidden="true"></i></button>
     <button type="submit" class="btn paramBar" id="clearSearch" (click)="clearParams(params)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
     <div class="pull-right" *ngIf="case">
-      <p><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{case.username}}</p>
+      <p><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{case.Username}}</p>
     </div>
   </form>
   <hr />
@@ -28,22 +28,22 @@
       <div class="col-md-6">
         <table class="table table-striped table-sm">
           <tr>
-            <td>Case #</td><td>{{case.caseNo}}</td><td>Home</td><td>{{case.homePhone}}</td>
+            <td>Case #</td><td>{{case.CaseNo}}</td><td>Home</td><td>{{case.HomePhone}}</td>
           </tr>
           <tr>
-            <td>SSN</td><td>{{case.ssn}}</td><td>Mobile</td><td>{{case.mobilePhone}}</td>
+            <td>SSN</td><td>{{case.SSN}}</td><td>Mobile</td><td>{{case.MobilePhone}}</td>
           </tr>
           <tr>
-            <td>DOB</td><td>{{case.dob}}</td><td>Text</td><td>{{case.textPhone}}</td>
+            <td>DOB</td><td>{{case.DOB}}</td><td>Text</td><td>{{case.TextPhone}}</td>
           </tr>
           <tr>
-            <td>Case Name</td><td>{{case.caseFirst}} {{case.caseLast}}</td><td>Email</td><td>{{case.email}}</td>
+            <td>Case Name</td><td>{{case.CaseFirst}} {{case.CaseLast}}</td><td>Email</td><td>{{case.Email}}</td>
           </tr>
           <tr>
-            <td>Address</td><td>{{case.street}}</td><td>Text</td><td>{{case.bcw}}</td>
+            <td>Address</td><td>{{case.Street}}</td><td>Text</td><td>{{case.BCW}}</td>
           </tr>
           <tr>
-            <td></td><td>{{case.city}} {{case.state}} {{case.zip}}</td><td>AR</td><td>{{case.arLast}}, {{case.arFirst}}</td>
+            <td></td><td>{{case.City}} {{case.State}} {{case.Zip}}</td><td>AR</td><td>{{case.ARLast}}, {{case.ARFirst}}</td>
           </tr>
         </table>
         <div>
@@ -57,7 +57,7 @@
                 </h5>
               </div>
               <div id="collapseOne" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
-                <case-indv-selector [individualData]='case.caseIndividuals' (individualID)="individualID($event)"></case-indv-selector>
+                <case-indv-selector [individualData]='case.CaseIndividuals' (individualID)="individualID($event)"></case-indv-selector>
               </div>
             </div>
             <div class="card mb-0 mt-1">
@@ -69,7 +69,7 @@
                 </h5>
               </div>
               <div id="collapseTwo" class="collapse in" role="tabpanel" aria-labelledby="headingTwo">
-                <indv-details-selector [individualDetails] = 'case.indivDetails' [individualID] = "selectedIndividualID"></indv-details-selector>
+                <indv-details-selector [individualDetails] = 'case.IndivDetails' [individualID] = "selectedIndividualID"></indv-details-selector>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@
           </popover-content>
           <b>Case Indicators</b> <i class="fa fa-info-circle text-info" aria-hidden="true" [popover]="indicatorPopover" [popoverOnHover]="true" popoverPlacement="top"></i>
           <table class="table table-striped table-sm">
-            <tr *ngFor="let indicator of case.indicators" [class.table-danger]="indicator.isActive" [class.font-weight-bold]="indicator.isActive"><td>{{indicator.name}}</td></tr>
+            <tr *ngFor="let indicator of case.Indicators" [class.table-danger]="indicator.IsActive" [class.font-weight-bold]="indicator.IsActive"><td>{{indicator.Name}}</td></tr>
           </table>
         </div>
         <div class="col-md-4">
@@ -91,10 +91,10 @@
           </popover-content>
           <b>Case Status</b> <i class="fa fa-info-circle text-info" aria-hidden="true" [popover]="statusPopover" [popoverOnHover]="true" popoverPlacement="top"></i>
           <table class="table table-striped table-sm">
-            <tr><td>EBT</td><td>{{case.caseStatus.ebt}}</td></tr>
-            <tr><td>Homeless</td><td>{{case.caseStatus.homeless}}</td></tr>
-            <tr><td>ABC</td><td>{{case.caseStatus.abc}}</td></tr>
-            <tr><td>XYZ</td><td>{{case.caseStatus.xyz}}</td></tr>
+            <tr><td>EBT</td><td>{{case.CaseStatus.EBT}}</td></tr>
+            <tr><td>Homeless</td><td>{{case.CaseStatus.Homeless}}</td></tr>
+            <tr><td>ABC</td><td>{{case.CaseStatus.ABC}}</td></tr>
+            <tr><td>XYZ</td><td>{{case.CaseStatus.XYZ}}</td></tr>
           </table>
         </div>
         <div class="col-md-4">
@@ -103,7 +103,7 @@
           </popover-content>
           <b>To Do List</b> <i class="fa fa-info-circle text-info" aria-hidden="true" [popover]="toDoPopover" [popoverOnHover]="true" popoverPlacement="top"></i>
           <table class="table table-striped table-sm">
-            <tr *ngFor="let toDo of case.toDoList"><td>{{toDo.actionDescription}}</td></tr>
+            <tr *ngFor="let toDo of case.ToDoList"><td>{{toDo.ActionDescription}}</td></tr>
           </table>
         </div>
         <div class="clearfix"></div>
@@ -118,7 +118,7 @@
                 </h5>
               </div>
               <div id="collapseThree" class="collapse in" role="tabpanel" aria-labelledby="headingThree">
-                <case-activity-selector [caseActivity] = "case.caseActivity" (activityID)="activityID($event)"></case-activity-selector>
+                <case-activity-selector [caseActivity] = "case.CaseActivity" (activityID)="activityID($event)"></case-activity-selector>
               </div>
             </div>
             <div class="card mb-0 mt-1">
@@ -130,7 +130,7 @@
                 </h5>
               </div>
               <div id="collapseFour" class="collapse in" role="tabpanel" aria-labelledby="headingFour">
-                <activity-details-selector [activityDetails] = "case.caseActivityDetails" [activityID] = "selectedActivityID"></activity-details-selector>
+                <activity-details-selector [activityDetails] = "case.CaseActivityDetails" [activityID] = "selectedActivityID"></activity-details-selector>
               </div>
             </div>
           </div>
@@ -146,7 +146,7 @@
             </h5>
           </div>
           <div id="collapseFive" class="collapse in" role="tabpanel" aria-labelledby="headingFive">
-            <case-comments-selector [commentsData]="case.caseComments"></case-comments-selector>
+            <case-comments-selector [commentsData]="case.CaseComments"></case-comments-selector>
           </div>
           </div>
         </div>
@@ -166,11 +166,11 @@
                 <tr class="bg-info text-white"><th>Parameter</th><th>Entered Value</th></tr>
               </thead>
               <tbody>
-                <tr><td>Case #</td><td>{{params.caseNo}}</td></tr>
-                <tr><td>SSN</td><td>{{params.ssn}}</td></tr>
-                <tr><td>Phone #</td><td>{{params.phoneNo}}</td></tr>
-                <tr><td>First Name</td><td>{{params.firstName}}</td></tr>
-                <tr><td>Last Name</td><td>{{params.lastName}}</td></tr>
+                <tr><td>Case #</td><td>{{params.CaseNo}}</td></tr>
+                <tr><td>SSN</td><td>{{params.SSN}}</td></tr>
+                <tr><td>Phone #</td><td>{{params.PhoneNo}}</td></tr>
+                <tr><td>First Name</td><td>{{params.FirstName}}</td></tr>
+                <tr><td>Last Name</td><td>{{params.LastName}}</td></tr>
               </tbody>
             </table>     
           </div>
@@ -178,5 +178,5 @@
       </div>
     </span>
   </div>
-  <!--<div *ngIf="case"><pre>{{ case.caseActivityDetails | json}}</pre></div>-->
+  <!--<div *ngIf="case"><pre>{{ case | json}}</pre></div>-->
 </div>
