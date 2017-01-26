@@ -13,11 +13,11 @@ export class CaseCommentsComponent implements OnChanges {
         if(this.commentsData && this.commentsData.length > 0){
             let comments = [];
             for(let i = 0; i < this.commentsData.length; i++) {
-                let commentDate = this.commentsData[i]["commentDate"]
-                let priority = this.commentsData[i]["priority"]
-                let program = this.commentsData[i]["program"]
-                let user = this.commentsData[i]["user"]
-                let description = this.commentsData[i]["description"]
+                let commentDate = this.commentsData[i]["CommentDate"]
+                let priority = this.commentsData[i]["Priority"]
+                let program = this.commentsData[i]["Program"]
+                let user = this.commentsData[i]["User"]
+                let description = this.commentsData[i]["Description"]
                 let commentItem = new Array(commentDate, priority, program, user, description);
                 comments.push(commentItem);
             }

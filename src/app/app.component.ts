@@ -18,16 +18,20 @@ export class AppComponent implements OnInit {
   selectedActivityID: number = 1;
   selectedIndividualID: number = 1;
   isValidCase: boolean = true;
+  isInvalidSearch: boolean;
   params: SearchParams;
   ngOnInit() {
-    this.params = new SearchParams("1", null, null, "", "");
-    this.getTests(this.params);
+    this.params = new SearchParams("f", null, null, "", "");
+    this.checkParamVals(this.params);
+    if(!this.isInvalidSearch) {
+      this.getTests(this.params);
+    }
   }
 
   getTests(parameters: SearchParams) {
         this._appService.getTests(parameters)
         .subscribe(value => {
-          if(value["caseNo"]) {
+          if(value["CaseNo"]) {
             this.isValidCase = true;
           }
           else {
@@ -45,7 +49,10 @@ export class AppComponent implements OnInit {
     this.selectedIndividualID = individualID;
   }
   searchCase(params: SearchParams) {
-    this.getTests(params);
+    this.checkParamVals(params);
+    if(!this.isInvalidSearch) {
+      this.getTests(params);
+    }
   }
   clearParams(params: SearchParams) {
     params.caseNo = "";
@@ -53,5 +60,25 @@ export class AppComponent implements OnInit {
     params.phoneNo = null;
     params.firstName = "";
     params.lastName = "";
+  }
+  checkParamVals(params: SearchParams) {
+    if(params.caseNo != "") {
+      this.isInvalidSearch = false;
+    }
+    else if(params.ssn != null){
+      this.isInvalidSearch = false;
+    }
+    else if(params.phoneNo != null){
+      this.isInvalidSearch = false;
+    }
+    else if(params.firstName != ""){
+      this.isInvalidSearch = false;
+    }
+    else if(params.lastName = ""){
+      this.isInvalidSearch = false;
+    }
+    else {
+      this.isInvalidSearch = true;
+    }
   }
 }

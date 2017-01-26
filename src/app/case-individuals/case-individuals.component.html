@@ -2,20 +2,20 @@
     <table class="table table-hover table-sm cursor">
         <thead>
             <tr class="bg-info text-white">
-                <th (click)="sortActivity('name')">Name</th>
-                <th (click)="sortActivity('relation')">Relation</th>
-                <th (click)="sortActivity('dob')">DOB</th>
-                <th (click)="sortActivity('cwin')">CWIN</th>
-                <th (click)="sortActivity('ssn')">SSN</th>
+                <th (click)="sortActivity('Name')">Name</th>
+                <th (click)="sortActivity('Relation')">Relation</th>
+                <th (click)="sortActivity('DOB')">DOB</th>
+                <th (click)="sortActivity('CWIN')">CWIN</th>
+                <th (click)="sortActivity('SSN')">SSN</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let caseIndividual of individualData; let i = index" (click)="selectIndividual(caseIndividual.indivID, i)" [ngClass]="{'selectedIndex': selectedIdx == i}" >
-                <td>{{caseIndividual.name}}</td>
-                <td>{{caseIndividual.relation}}</td>
-                <td>{{caseIndividual.dob}}</td>
-                <td>{{caseIndividual.cwin}}</td>
-                <td>{{caseIndividual.ssn}}</td>
+            <tr *ngFor="let caseIndividual of individualData; let i = index" (click)="selectIndividual(caseIndividual.IndivID, i)" [ngClass]="{'selectedIndex': selectedIdx == i}" >
+                <td>{{caseIndividual.Name}}</td>
+                <td>{{caseIndividual.Relation}}</td>
+                <td>{{caseIndividual.DOB}}</td>
+                <td>{{caseIndividual.CWIN}}</td>
+                <td>{{caseIndividual.SSN}}</td>
             </tr>
         </tbody>
     </table>

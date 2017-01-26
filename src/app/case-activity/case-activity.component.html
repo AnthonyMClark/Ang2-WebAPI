@@ -2,14 +2,14 @@
     <table class="table table-hover table-sm cursor" id="testTable">
         <thead>
             <tr class="bg-info text-white">
-                <th (click)="sortActivity('name')">Activity</th>
-                <th (click)="sortActivity('activityCount')"><span class="pull-right">Open Items</span></th>
+                <th (click)="sortActivity('Name')">Activity</th>
+                <th (click)="sortActivity('ActivityCount')"><span class="pull-right">Open Items</span></th>
             </tr>
         </thead>
         <tbody class="cursor">
-            <tr *ngFor="let activity of caseActivity; let i = index" (click)="selectActivity(activity.activityID, i)" [ngClass]="{'selectedIndex': selectedIdx == i}">
-                <td>{{activity.name}}</td>
-                <td><span class="pull-right">{{activity.activityCount}}</span></td>
+            <tr *ngFor="let activity of caseActivity; let i = index" (click)="selectActivity(activity.ActivityID, i)" [ngClass]="{'selectedIndex': selectedIdx == i}">
+                <td>{{activity.Name}}</td>
+                <td><span class="pull-right">{{activity.ActivityCount}}</span></td>
             </tr>
         </tbody>
     </table>

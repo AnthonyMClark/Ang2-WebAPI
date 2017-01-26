@@ -32,7 +32,7 @@ export class CaseActivityComponent {
         this.activitySortDesc = !this.activitySortDesc;
         //Maintain the highlighted item after sorting
         for(let i = 0; i < this.caseActivity.length; i++) {
-            if(this.selectedActivityID == this.caseActivity[i]["activityID"]) {
+            if(this.selectedActivityID == this.caseActivity[i]["ActivityID"]) {
                 this.selectedIdx = i;
             }
         }
