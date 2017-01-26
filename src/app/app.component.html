@@ -21,6 +21,7 @@
     <div class="pull-right" *ngIf="case">
       <p><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{case.Username}}</p>
     </div>
+    <div [hidden]="!isInvalidSearch" class="alert alert-danger mt-1">One or more search parameters are required.</div>
   </form>
   <hr />
   <div class="row" *ngIf="case">

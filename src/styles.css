@@ -22,10 +22,13 @@ table {
 .paramBar {
     padding: .2rem .75rem;
 }
+.table-sm td, .table-sm th {
+    padding: .2rem !important;
+}
 .dataTable {
     width: 100% !important;
 }
-table.dataTable thead th, table.dataTable thead td {
+table.dataTable thead th, table.dataTable thead td, table.dataTable tbody th, table.dataTable tbody td {
     padding: .3rem;
 }
 .dataTable .sorting, .sorting_asc, .sorting_desc {
@@ -59,3 +62,7 @@ table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {
     border: 1px solid rgba(0,0,0,.15);
     border-radius: .25rem;
 }
+/*hr {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}*/

@@ -24,7 +24,7 @@ export class ActivityDetailsComponent implements OnChanges {
         this.buildTable(newID);
     }
 
-
+    //Table has to be destroyed, removed from DOM, and rebuilt each time. Datatable.js does not support varied number of table headers
     buildTable(newID: any) {
         switch (this.activityID) {
             case 1:
